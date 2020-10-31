@@ -14,7 +14,8 @@ body{
 
 .start_btn, 
 .info_box,
-.quiz_box{
+.quiz_box,
+.result_box{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -107,6 +108,7 @@ buttons button.restart{
 
 
 .quiz_box{
+    display: none;
     width: 550px;
     background: white;
     border-radius: 5px;
@@ -114,6 +116,8 @@ buttons button.restart{
 
 
 .quiz_box header{
+    position: relative;
+    z-index: 99;
     height: 70px;
     padding: 0 30px;
     background: white;
@@ -147,4 +151,132 @@ buttons button.restart{
     font-weight: 400;
     font-size: 17px;
     user-select: none;
+}
+
+.quiz_box header .timer .timer_sec{
+    font-size: 18px;
+    font-weight: 500;
+    background: blue;
+    height: 30px;
+    width: 45px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    user-select: none;
+}
+
+.quiz_box section{
+    padding: 25px 30px 20px 30px;
+    background: white;
+}
+
+.quiz_box section .que_text{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.quiz_box section .option_list{
+    padding: 20px 0;
+    display: block;
+}
+
+section .option_list .option{
+    background: burlywood;
+    border: 1px solid chocolate;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+section .option_list .option:hover{
+    color: aqua;
+    background: teal;
+    border-color: olive;
+}
+
+.option_list .option:last-child{
+    margin-bottom: 0px; 
+}
+
+.option_list .option .icon{
+    height: 26px;
+    width: 26px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 13px;
+    line-height: 24px;
+    pointer-events: none;
+
+}
+
+.option_list .option .icon.tick{
+    color: green;
+    border-color: green;
+    background: wheat;
+}
+.option_list .option .icon.cross{
+    color:  red;
+    border-color: pink;
+    background: black;
+}
+
+.quiz_box footer{
+    height: 60px;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+}
+
+.quiz_box footer .total_que span{
+    display: flex;
+    user-select: none;
+}
+footer .total_que span p{
+    font-weight: 500;
+    padding: 0 5px;
+}
+
+.total_que span p:first-child{
+    padding-left: 0px;
+}
+
+footer .next_btn{
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    color: cornflowerblue;
+    background: darkgoldenrod;
+    border-radius: 5px;
+    border: 1px solid cornflowerblue;
+    cursor: pointer;
+}
+
+footer .next_btn:hover{
+    background: purple;
+}
+
+.result_box{
+    background: chartreuse;
+    width: 450px;
+    padding: 25px 30px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
