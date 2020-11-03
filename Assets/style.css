@@ -1,6 +1,3 @@
-/*importing google fonts */
-/*@import url('https://fonts.googleapis.com/css2?family'); */
-
 *{
     margin: 0;
     padding: 0;
@@ -27,7 +24,8 @@ body{
 
 
 .info_box.activeInfo,
-.quiz_box.activeQuiz{
+.quiz_box.activeQuiz,
+.result_box.activeResult{
     z-index: 5;
     opacity: 1;
     pointer-events: auto;
@@ -186,6 +184,14 @@ body{
     user-select: none;
 }
 
+.quiz_box header .time_line{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: red;
+}
+
 .quiz_box section{
     padding: 25px 30px 20px 30px;
     background: white;
@@ -269,6 +275,7 @@ section .option_list .option:hover{
     padding: 0 30px;
     display: flex;
     align-items: center;
+    border-top: 1px lightblue;
    justify-content: space-between;
 }
 
@@ -286,6 +293,7 @@ footer .total_que span p{
 }
 
 footer .next_btn{
+    display: none;
     height: 40px;
     padding: 0 13px;
     font-size: 18px;
@@ -297,6 +305,7 @@ footer .next_btn{
     border-radius: 5px;
     border: 1px solid cornflowerblue;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 footer .next_btn:hover{
