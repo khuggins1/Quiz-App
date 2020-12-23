@@ -34,7 +34,7 @@ continue_btn.onclick = ()=>{
     startTimerLine(0);
 }
 
-let timeVale = 20;
+let timeValue = 20;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -42,41 +42,53 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
-const 
+const restart = results.querySelector(".btn .again");
+const quit = results.querySelector(".btn .quit");
 
-restart_quiz.onclick = ()=> {
-    result_box.classList.remove("activeResult");
-        quiz_box.classList.add("activeQuiz")
-    let que_count = 0;
-    let que_numb = 1;
-    let timeValue = 15;
-    let widthValue = 0;
-    let userScore = 0;
-    showQuestions(que_count);
+restart.onclick = ()=> {
+    quiz.classList.add("activeQuiz");
+    restart.classList.remove("activeResult");
+    timeValue = 20;
+    que_count = 0;
+    que_numb = 1;
+    userScore = 0;
+    widthValue = 0;
+    showQuestions (que_count);
     queCounter(que_numb);
     clearInterval(counter);
-    startTimer(timeValue);
     clearInterval(counterLine);
+    startTimer(timeValue);
     startTimerLine(widthValue);
-    next_btn.style.display = "none";
+    timeText.textContent = "Time Left";
+    next.classList.remove("show");
 }
 
+quit.onclick = ()=> {
+    window.location.reload();
+}
+
+const next = document.querySelector("footer .next");
+const bottom_ques_counter = document.querySelector("footer .total_que");
+
 //if next button clicked
-next_btn.onclick = ()=>{
+next.onclick = ()=>{
    if(que_count < questions.length - 1){ 
        que_count++;
        que_numb++;
     showQuestions(que_count);
     queCounter(que_numb);
     clearInterval(counter);
+    clearInterval(counterLine)
     startTimer(timeValue);
     clearInterval(counterLine);
     startTimerLine(widthValue);
-    next_btn.style.display = "none";
-} else{
-    console.log("Questions completed");
-    showResultsbox;
+    timeText.textContent = "Time Left";
+    next.classList.remove("show");
 
+} else{
+    clearInterval(counter);
+    clearInterval(counterLine);
+    showResultsbox();
 }
 }
 
@@ -85,14 +97,14 @@ function showQuestions(index){
     const que_text = document.querySelector(".que_text");
     let que_tag = '<span>' + questions[index].numb + ". " + questions[index].question + '</span>';
     let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
-                    + '<div class="option">'+ questions[index].options[1] +'<span></span></div>'
-                    + '<div class="option">'+ questions[index].options[2] +'<span></span></div>'
-                    +  '<div class="option">'+ questions[index].options[3] +'<span></span></div>'
+                    + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
+                    + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
+                    +  '<div class="option"><span>'+ questions[index].options[3] +'</span></div>'
     que_text.innerHTML = que_tag;
     option_list.innerHTML = option_tag;
     
     const option = option_list.querySelector(".option");
-    for (let i = 0; i < option.length; i++) {
+    for (i = 0; i < option.length; i++) {
         option[i].setAtrribute("onclick", "optionSelected(this)");
     }
 }
