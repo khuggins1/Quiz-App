@@ -1,8 +1,8 @@
 let questions = [
     {
         numb: 1,
-        question: "What does Html stand for?",
-        answer: "Hyper Text Markup Language",
+        question: "What does CSS stand for?",
+        answer: "Cascading Style Sheets",
         options: [
             "Hyper Text Preprocessor",
             "Hyper Text Markup Language",

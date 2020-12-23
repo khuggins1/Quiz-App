@@ -1,50 +1,48 @@
 //getting all required elements
 
-const start_btn = document.querySelector(".start_btn button");
-const info_box = document.querySelector(".info_box");
-const exit_btn = info_box.querySelector(".buttons .quit");
-const continue_btn = info_box.querySelector(".buttons .restart");
-const quiz_box = document.querySelector(".quiz_box");
-const timeCount = quiz_box.querySelector(".timer .timer_sec");
-const timeLine = quiz_box.querySelector(".header .timer_line");
+const start = document.querySelector(".start");
+const square = document.querySelector(".square");
+const exit_btn = square.querySelector(".btn .quit");
+const continue_btn = square.querySelector(".btn .again");
+const quiz = document.querySelector(".qcube");
+const results = document.querySelector(".results");
+const questions = document.querySelector(".questList");
+const timego = document.querySelector("header .timego")
+const timeWord = document.querySelector(".time .ttext ")
+const timeMany = quiz_box.querySelector(".time .tsec");
 
-const option_list = document.querySelector("option_list");
 
 
 //If Start Quiz Button clicked
 
-start_btn.onclick = ()=>{
-    info_box.classList.add("activeInfo"); //show the info box
+start.onclick = ()=>{
+    square.classList.add("activeInfo"); //show the info box
 }
 
 //If exit button clicked
 exit_btn.onclick = ()=>{
-    info_box.classList.remove("activeInfo"); //hide the info box
+    square.classList.remove("activeInfo"); //hide the info box
 }
 
 //If continue button clicked
 continue_btn.onclick = ()=>{
-    info_box.classList.remove("activeInfo"); //hide the info box
-    quiz_box.classList.add("activeQuiz"); // show the quiz box
-    //queCounter(1);
-   // showQuestions(0);
-    startTimer(15);
-    //startTimerLine(0);
+    square.classList.remove("activeInfo"); //hide the info box
+    quiz.classList.add("activeQuiz"); // show the quiz box
+   showQuestions(0);
+   queCounter(1);
+    startTimer(20);
+    startTimerLine(0);
 }
 
+let timeVale = 20;
 let que_count = 0;
 let que_numb = 1;
+let userScore = 0;
 let counter;
 let counterLine;
-let timeValue = 15;
 let widthValue = 0;
-let userScore = 0;
 
-
-const next_btn = quiz_box.querySelector(".next_btn");
-const result_box = document.querySelector(".result_box");
-const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
+const 
 
 restart_quiz.onclick = ()=> {
     result_box.classList.remove("activeResult");
@@ -55,7 +53,7 @@ restart_quiz.onclick = ()=> {
     let widthValue = 0;
     let userScore = 0;
     showQuestions(que_count);
-    //queCounter(que_numb);
+    queCounter(que_numb);
     clearInterval(counter);
     startTimer(timeValue);
     clearInterval(counterLine);
@@ -90,17 +88,14 @@ function showQuestions(index){
                     + '<div class="option">'+ questions[index].options[1] +'<span></span></div>'
                     + '<div class="option">'+ questions[index].options[2] +'<span></span></div>'
                     +  '<div class="option">'+ questions[index].options[3] +'<span></span></div>'
-   // que_text.innerHTML = que_tag;
-   // option_list.innerHTML = option_tag;
+    que_text.innerHTML = que_tag;
+    option_list.innerHTML = option_tag;
     
-    const option = option_list.querySelectorAll(".option");
+    const option = option_list.querySelector(".option");
     for (let i = 0; i < option.length; i++) {
         option[i].setAtrribute("onclick", "optionSelected(this)");
     }
 }
-
-let tickIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
-let crossIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 
 function optionSelected(answer){
     clearInterval(counter);
@@ -169,17 +164,19 @@ function startTimer(time) {
         }
     }
 }
-//function startTimerLine(time) {
-  //  counterLine = setInterval(timer, 29);
-    //function timer(){
-      //  time += 1;
-        //startertimeLine.style.width = time + "px";
-        //if(time > 549){
-          //  clearInterval(counterLine);
+function startTimerLine(time) {
+    counterLine = setInterval(timer, 29);
+    function timer(){
+        time += 1;
+        startertimeLine.style.width = time + "px";
+        if(time > 549){
+           clearInterval(counterLine);
+        }
+    }
+}
 
-
-//function queCounter(index){
-//    que_Count = quiz_box.querySelector(".total_que");
-//    let totalQuesCountTag = '<span><p>'+ index +'</p>of<p>'+ questions.length +'</p>Questions</span>';
- //   que_count.innerHTML = totalQuesCountTag;
-//}
+function queCounter(index){
+   que_Count = quiz_box.querySelector(".total_que");
+  let totalQuesCountTag = '<span><p>'+ index +'</p>of<p>'+ questions.length +'</p>Questions</span>';
+    que_count.innerHTML = totalQuesCountTag;
+}
