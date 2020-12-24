@@ -9,6 +9,12 @@ body{
     background: #ffb300;
 }
 
+::selection {
+    color: #263238;
+    background: #66bb6a;
+
+}
+
 
 .start,
 .square,
@@ -18,17 +24,17 @@ body{
     top: 50%;
     left: 50%;
     transform: traslate(-50%, -50%);
-    box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2),
-                0px 6px 20px 0 rgba(0,0,0,0.19);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 6px 20px 0 rgba(0,0,0,0.19);
+    /* transition: all 0.3s ease; */
 }
 
 
-.info_box.activeInfo,
-.quiz_box.activeQuiz,
-.result_box.activeResult{
-    z-index: 5;
+.square.activeInfo,
+.quiz.activeQuiz,
+.result.activeResult{
     opacity: 1;
+    z-index: 5;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
@@ -50,37 +56,40 @@ body{
     width: 540px;
     background: orange;
     border-radius: 5px;
+    transform: traslate(-50%, -50%) scale(0.9);
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.9);
+    transition: all 0.3s ease;
+    
 }
 
-.square .info_name{
+.square .data_name{
     height: 60px;
     width: 100%;
     border-bottom: 1px solid lightgrey;
     display: flex;
     align-items: center;
     padding: 0 30px;
+    border-radius: 5px 5px 0 0;
     font-size: 20px;
     font-weight: 600;
 }
 
-.info_box .info_list{
+.square .data_list{
     padding: 15px 30px;
 }
 
-.info_box .info_list .info{
+.square .data_list .data{
     margin: 5px 0;
     font-size: 17px;
 }
 
-.info_box .info_list .info span{
+.square .data_list .data span{
     font-weight: 600;
     color: black;
 }
 
-.info_box .buttons{
+.square .buttons{
     height: 60px;
     display: flex;
     align-items: center;
@@ -88,23 +97,99 @@ body{
     padding: 0 30px;
     border-top: 1px solid lightgrey;
 }
-.info_box .buttons button{
+.square .buttons button{
     margin: 0 5px;
     height: 40px;
-    width: 100px;
-    outline: none;
-    border: 1px solid black;
-    border-radius: 5px;
-    color: white;
+    width: 10px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid gray;
     transition: all 0.3s ease;
 }
+.qcube {
+    width: 550px;
+    background: red;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.qcube header{
+    position: relative;
+    z-index: 2;
+    height: 70px;
+    padding: 0 30px;
+    background: purple;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
+}
+
+.qcube header .name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.qcube header .time{
+    color: blue;
+    background: olive;
+    border: 1px solid salmon;
+    height: 45px;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+}
+.qcube header .time .ttext {
+    font-weight: 400;
+    font-size: 17px;
+    user-select: none;
+} 
+.qcube header .time .tsec {
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: lightgreen;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background: lightpink;
+    border: 1px solid blueviolet;
+    user-select: none;
+}
+
+.qcube header .timego{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: yellow;
+}
+
 
 .buttons button.restart{
     color: white;
     background: blue;
+}
+
+section {
+    padding: 25px 30px 20px 30px;
+    background: whitesmoke;
+}
+
+section .que_text{
+    font-size: 25px;
+    font-weight: 600;;
 }
 
 .buttons button.restart:hover{
