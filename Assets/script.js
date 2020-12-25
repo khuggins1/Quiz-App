@@ -1,15 +1,15 @@
-//getting all required elements
 
-const start = document.querySelector(".start");
+
+const start = document.querySelector(".start button");
 const square = document.querySelector(".square");
-const exit_btn = square.querySelector(".btn .quit");
-const continue_btn = square.querySelector(".btn .again");
-const quiz = document.querySelector(".qcube");
+const cancel = square.querySelector(".buttons .quit");
+const try_again = square.querySelector(".buttons .again");
+const quiz = document.querySelector(".quiz");
 const results = document.querySelector(".results");
-const questions = document.querySelector(".questList");
+const option_list = document.querySelector(".option_list");
 const timego = document.querySelector("header .timego")
-const timeWord = document.querySelector(".time .ttext ")
-const timeMany = quiz_box.querySelector(".time .tsec");
+const timeText = document.querySelector(".time .ttext ")
+const timeCount = document.querySelector(".time .tsec");
 
 
 
@@ -20,12 +20,12 @@ start.onclick = ()=>{
 }
 
 //If exit button clicked
-exit_btn.onclick = ()=>{
+cancel.onclick = ()=>{ 
     square.classList.remove("activeInfo"); //hide the info box
 }
 
 //If continue button clicked
-continue_btn.onclick = ()=>{
+try_again.onclick = ()=>{
     square.classList.remove("activeInfo"); //hide the info box
     quiz.classList.add("activeQuiz"); // show the quiz box
    showQuestions(0);
@@ -42,12 +42,12 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
-const restart = results.querySelector(".btn .again");
-const quit = results.querySelector(".btn .quit");
+const restart_quiz = results.querySelector(".buttons .again");
+const quit_quiz = results.querySelector(".buttons .quit");
 
-restart.onclick = ()=> {
+restart_quiz.onclick = ()=> {
     quiz.classList.add("activeQuiz");
-    restart.classList.remove("activeResult");
+    results.classList.remove("activeResult");
     timeValue = 20;
     que_count = 0;
     que_numb = 1;
@@ -97,21 +97,21 @@ function showQuestions(index){
     const que_text = document.querySelector(".que_text");
     let que_tag = '<span>' + questions[index].numb + ". " + questions[index].question + '</span>';
     let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
-                    + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
-                    + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
-                    +  '<div class="option"><span>'+ questions[index].options[3] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
+    + '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
     que_text.innerHTML = que_tag;
-    questList.innerHTML = option_tag;
+    option_list.innerHTML = option_tag;
     
-    const option = questList.querySelector(".option");
+    const option = option_list.querySelectorAll(".option");
     for (i = 0; i < option.length; i++) {
         option[i].setAtrribute("onclick", "optionSelected(this)");
     }
 }
 
-let checkIconTag = '<div class="check tag"><i class="outline check"></i></div>';
+let checkIconTag = '<div class="icon check"><i class="fas fa-check-square"></i></div>';
 
-let closeIconTag = '<div class="close tag"><i class="close"></i></div>';
+let crossIconTag = '<div class="icon cross"><i class="fas fa-times-circle"></i></div>';
 
 function optionSelected(answer){
     clearInterval(counter);
@@ -125,19 +125,21 @@ function optionSelected(answer){
     answer.insertAdjacentHTML("beforeend", checkIconTag);
 }else{
     answer.classList.add("incorrect");
-    answer.insertAdjacentHTML("beforeend", closeIconTag);
+    answer.insertAdjacentHTML("beforeend", crossIconTag);
+    console.log("Wrong Answer");
 
     //if anser is incorrect then automatically selecte correct answer
-    for (let i = 0; i < allOptions; i++) {
-        if(questList.children[i].textContent == correcAns){
-        questList.children[i].setAtrribute("class", "option correct");
-        questList.children[i].insertAdjacentHTML("beforeend", checkIconTag);
+    for (i=0; i < allOptions; i++) {
+        if(option_list.children[i].textContent == correcAns){
+        option_list.children[i].setAtrribute("class", "option correct");
+        option_list.children[i].insertAdjacentHTML("beforeend", checkIconTag);
+        console.log("Auto selected correct answer.");
         }
     }
 }
 //once user selected disabled all options
 for (i = 0; i < allOptions; i++) {
-    questList.children[i].classList.add("disabled");
+    option_list.children[i].classList.add("disabled");
     
     }
     next.classList.add("show"); 
@@ -147,7 +149,7 @@ function showResults(){
     square.classList.remove("activeInfo");//hide the info box
     quiz.classList.remove("activeQuiz");// hide the quiz box
     results.classList.add("activeResult");//show the result box
-    const scoreText = results.querySelector(".score_text");
+    const scoreText = results.querySelector(".score");
     if(userScore > 3){
         let scoreTag = '<span>and congrats, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
@@ -162,41 +164,41 @@ function showResults(){
     }
 }
 
-function startTimer(times) {
+function startTimer(time) {
     counter = setInterval(timer, 1000);
     function timer(){
-        timeCount.textContent = times;
-        times--;
-        if(times < 9){
+        timeCount.textContent = time;
+        time--;
+        if(time < 9){
             let addZero = timeCount.textContent;
             timeCount.textContent = "0" + addZero;
         }
-        if(times < 0){
+        if(time < 0){
             clearInterval(counter);
             timeText.textContent = "Time Off";
-            const allOptions = questList.children.length;
+            const allOptions = option_list.children.length;
             let correcAns = questions[que_count].answer;
 
             for( i=0; i < allOptions; i++) {
-                if(questList.children[i].textContent == correcAns){
-                    questList.children[i].setAtrribute("class", "option correct");
-                    questList.children[i].insertAdjacentHTML("beforeend", checkIconTag);
+                if(option_list.children[i].textContent == correcAns){
+                    option_list.children[i].setAtrribute("class", "option correct");
+                    option_list.children[i].insertAdjacentHTML("beforeend", checkIconTag);
                     console.log("Time off: Auto selected correct answer.");
                  }
 
                 }
                 for(i=0; i < allOptions; i++) {
-                    questList.children[i].classList.add("disabled");
+                    option_list.children[i].classList.add("disabled");
                 }
                 next.classList.add("show");
             }
             }
 }
-function startTimerLine(times) {
+function startTimerLine(time) {
     counterLine = setInterval(timer, 29);
     function timer(){
         times += 1;
-        timego.style.width = times + "px";
+        timego.style.width = time + "px";
         if(time > 549){
            clearInterval(counterLine);
         }

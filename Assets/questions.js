@@ -7,7 +7,7 @@ let questions = [
             "Cascading Style Sheets",
             "Cascading Style Smiles",
             "Cascading Super Style",
-            "Cascading Style Sass",
+            "Cascading Style Sass"
     ]
 },
     
@@ -19,7 +19,7 @@ let questions = [
                     "commit, push, and add",
                     "add, commit, and push",
                     "push, add, and commit ",
-                    "push, add, and commit",
+                    "push, add, and commit"
             ]
         },
         {
@@ -27,12 +27,11 @@ let questions = [
                 question: "What does API stand for?",
                 answer: "Application Programming Interface",
                 options: [
-                    " ",
+                    "Application Program inyourface ",
                     "Always Programming Interface",
                     "Application Programe Internet",
-                    "Application Programming Interface",
+                    "Application Programming Interface"
                 ]
-
             
         },
         {
@@ -43,7 +42,7 @@ let questions = [
                     "Stylish Awesome style sheets",
                     "Syntactically Applications style sheets",
                     "Syntactically Awesome Style Sheets",
-                    "Styling apps solo sheets",
+                    "Styling apps solo sheets"
                 ]
 
             
@@ -56,7 +55,7 @@ let questions = [
                     "Bill Gates",
                     "Elon Musk",
                     "Kassim",
-                    "Mark Zuckerburg",
+                    "Mark Zuckerburg"
                 ]
 
             

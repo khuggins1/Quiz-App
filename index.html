@@ -6,10 +6,7 @@
     <title>Welcome to my Quiz App</title>
     <link rel="stylesheet" href="./Assets/style.css">
 <!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="./Assets/materialize.min.css"  media="screen,projection"/>
-
+<script src="https://kit.fontawesome.com/11a8b5ce6f.js"></script>
 </head>
 <body>
     <!--Start Quiz Button-->
@@ -17,11 +14,9 @@
 
    <!--Info Box-->
    <div class="square">
-    <div class="data_name">
-       <span>Rules of this Quiz</span>
-   </div>
+     <div class="data-name"><span>Rules of this Quiz</span></div>
    <div class="data_list">
-    <div class="data">1. You'll have <span>20 seconds</span>per each question.</div>
+    <div class="data">1. You'll have <span>20 seconds</span> per each question.</div>
     <div class="data">2. No switching!</div> 
     <div class="data">3. When time is up that's it!</div>
     <div class="data">4. No exiting quiz once you've started</div> 
@@ -34,7 +29,7 @@
 </div>
 
 <!--Quiz Box-->
-<div class="qcube">
+<div class="quiz">
     <header>
         <div class="name">A Quiz App</div>
         <div class="time">
@@ -46,32 +41,35 @@
 <section>
     <div class="que_text">
         <!--Questions from Javascript-->
-       <span>What does CSS stand for?</span>
+        <!-- <span>What does CSS stand for?</span>
     </div>
     <div class="questList">
         <div class="optiona">
             <span>Cascading Style Sheets</span>
-            <div class="icon tick"><i class="fas fa-check"></i></div>
+            <div class="icon check"><i class="fas fa-check-square"></i></div>
     </div>
     <div class="optiona">
         <span>Cascading Style Smiles</span>
-        <div class="icon cross"><i class="fas fa-times"></i></div>
+        <div class="icon cross"><i class="fas fa-times-circle"></i></div>
     </div>
     <div class="optiona">
         <span>Cascading Super Style</span>
-        <div class="icon cross"><i class="fas fa-times"></i></div>
+        <div class="icon cross"><i class="fas fa-times-circle"></i></div>
     </div>
         <div class="optiona">
             <span>Cascading Style Sass</span>
-            <div class="icon cross"><i class="fas fa-times"></i></div>
-        </div> 
+            <div class="icon cross"><i class="fas fa-times-circle"></i></div>
+        </div>  -->
+    </div>
+    <div class="option_list">
+
     </div>
 </section>
 
 <!--Quiz Box Footer-->
 <footer>
     <div class="totals">
-
+        <span><p>2</p>of<p>5</p>Questions</span>
     </div>
     <button class="next">Next Question</button>
 </footer>
@@ -80,7 +78,7 @@
 <!--Result Box-->
 <div class="results">
 <div class="icon">
-    <i class="grade"></i>
+    <!-- <i class="grade"></i> -->
 </div>
     <div class="completed">You've completed the Quiz</div>
     <div class="score">
@@ -90,11 +88,11 @@
         <button class="quit">Quit</button>
     </div>
     </div>
+
 <!--Questions and options-->
   <script src="./Assets/questions.js"></script>
 <!--Quiz codes-->
 <script src="./Assets/script.js"></script>
 
-   <script type="text/javascript" src="./Assets/materialize.min.css"></script>
 </body>
 </html>
