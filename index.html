@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to my Quiz App</title>
     <link rel="stylesheet" href="./Assets/style.css">
-<!--Import Google Icon Font-->
+
 <script src="https://kit.fontawesome.com/11a8b5ce6f.js"></script>
 </head>
 
 <body>
-    <!-- start Quiz button -->
-    <div class="start_btn"><button>Begin Quiz</button></div>
+    
+    <div class="start"><button>Begin Quiz</button></div>
 
-    <!-- Info Box -->
-    <div class="info_box">
-        <div class="info-title"><span>Rules of the Quiz</span></div>
-        <div class="info-list">
-            <div class="info">1. You'll have 15 seconds per each question.</div>
-            <div class="info">2. No switching!</div>
-            <div class="info">3. When time is up that's it!</div>
-            <div class="info">4. No exiting once you've started</div>
-            <div class="info">5. You'll get points on the basis of your correct answers.</div>
+    
+    <div class="data_box">
+        <div class="data-title"><span>Rules of the Quiz</span></div>
+        <div class="data-list">
+            <div class="data">1. You'll have 15 seconds per each question.</div>
+            <div class="data">2. No switching!</div>
+            <div class="data">3. When time is up that's it!</div>
+            <div class="data">4. No exiting once you've started</div>
+            <div class="data">5. You'll get points on the basis of your correct answers.</div>
         </div>
         <div class="buttons">
             <button class="quit">Exit Quiz</button>
@@ -29,42 +29,41 @@
         </div>
     </div>
 
-    <!-- Quiz Box -->
-    <div class="quiz_box">
+    
+    <div class="quiz">
         <header>
-            <div class="title">Awesome Quiz Application</div>
-            <div class="timer">
-                <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">15</div>
+            <div class="name">Awesome Quiz Application</div>
+            <div class="clock">
+                <div class="clockTxt">Time Left</div>
+                <div class="clockSec">15</div>
             </div>
-            <div class="time_line"></div>
+            <div class="clockStraight"></div>
         </header>
         <section>
-            <div class="que_text">
-                <!-- Here I've inserted question from JavaScript -->
+            <div class="questTxt">
+        
             </div>
-            <div class="option_list">
-                <!-- Here I've inserted options from JavaScript -->
+            <div class="choices">
+            
             </div>
         </section>
 
-        <!-- footer of Quiz Box -->
+        <!-- footer -->
         <footer>
-            <div class="total_que">
-                <!-- Here I've inserted Question Count Number from JavaScript -->
+            <div class="sum">
+            
             </div>
-            <button class="next_btn">Next Que</button>
+            <button class="forwardBtn">Next Question</button>
         </footer>
     </div>
 
-    <!-- Result Box -->
-    <div class="result_box">
+    <div class="completion">
         <div class="icon">
             <i class="fas fa-dice-d20"></i>
         </div>
         <div class="complete_text">You've completed the Quiz!</div>
         <div class="score_text">
-            <!-- Here I've inserted Score Result from JavaScript -->
+            
         </div>
         <div class="buttons">
             <button class="restart">Try Again</button>
@@ -72,9 +71,7 @@
         </div>
     </div>
 
-<!--Questions and options-->
   <script src="./Assets/questions.js"></script>
-<!--Quiz codes-->
 <script src="./Assets/script.js"></script>
 
 </body>

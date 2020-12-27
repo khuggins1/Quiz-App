@@ -16,10 +16,10 @@ body{
     background: rgb(243, 159, 4);
 }
 
-.start_btn,
-.info_box,
-.quiz_box,
-.result_box{
+.start,
+.data_box,
+.quiz,
+.completion{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,16 +27,16 @@ body{
    
 }
 
-.info_box.activeInfo,
-.quiz_box.activeQuiz,
-.result_box.activeResult{
+.data_box.activeInfo,
+.quiz.activeQuiz,
+.completion.activeResult{
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
 
-.start_btn button{
+.start button{
     font-size: 25px;
     font-weight: 500;
     color: rgb(243, 159, 4);
@@ -48,7 +48,7 @@ body{
     cursor: pointer;
 }
 
-.info_box{
+.data_box{
     width: 540px;
     background: rgb(243, 159, 4);
     border-radius: 5px;
@@ -58,7 +58,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.info_box .info-title{
+.data_box .data-title{
     height: 60px;
     width: 100%;
     border-bottom: 1px solid rgb(231, 9, 9);
@@ -70,20 +70,20 @@ body{
     font-weight: 600;
 }
 
-.info_box .info-list{
+.data_box .data-list{
     padding: 15px 30px;
 }
 
-.info_box .info-list .info{
+.data_box .data-list .data{
     margin: 5px 0;
     font-size: 17px;
 }
 
-.info_box .info-list .info span{
+.data_box .data-list .data span{
     font-weight: 600;
     color: rgb(243, 159, 4);
 }
-.info_box .buttons{
+.data_box .buttons{
     height: 60px;
     display: flex;
     align-items: center;
@@ -92,7 +92,7 @@ body{
     border-top: 1px rgb(231, 9, 9);
 }
 
-.info_box .buttons button{
+.data_box .buttons button{
     margin: 0 5px;
     height: 40px;
     width: 100px;
@@ -106,7 +106,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.quiz_box{
+.quiz{
     width: 550px;
     background: black;
     border-radius: 5px;
@@ -116,7 +116,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.quiz_box header{
+.quiz header{
     position: relative;
     z-index: 2;
     height: 70px;
@@ -129,12 +129,12 @@ body{
     box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
 }
 
-.quiz_box header .title{
+.quiz header .name{
     font-size: 20px;
     font-weight: 600;
 }
 
-.quiz_box header .timer{
+.quiz header .clock{
     color: black;
     background: rgb(243, 159, 4);
     border: 1px solid black;
@@ -147,13 +147,14 @@ body{
     width: 145px;
 }
 
-.quiz_box header .timer .time_left_txt{
+.quiz header .clock .clockTxt{
     font-weight: 400;
     font-size: 17px;
     user-select: none;
+    color: black;
 }
 
-.quiz_box header .timer .timer_sec{
+.quiz header .clock .clockSec{
     font-size: 18px;
     font-weight: 500;
     height: 30px;
@@ -167,7 +168,7 @@ body{
     user-select: none;
 }
 
-.quiz_box header .time_line{
+.quiz header .clockStraight{
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -180,17 +181,18 @@ section{
     background:black;
 }
 
-section .que_text{
+section .questTxt{
     font-size: 25px;
     font-weight: 600;
+    color: rgb(243, 159, 4);
 }
 
-section .option_list{
+section .choices{
     padding: 20px 0px;
     display: block;   
 }
 
-section .option_list .option{
+section .choices .option{
     background: rgb(243, 159, 4);
     border: 1px solid black;
     border-radius: 5px;
@@ -204,33 +206,33 @@ section .option_list .option{
     justify-content: space-between;
 }
 
-section .option_list .option:last-child{
+section .choices .option:last-child{
     margin-bottom: 0px;
 }
 
-section .option_list .option:hover{
+section .choices .option:hover{
     color: black;
     background: rgb(231, 9, 9);
     border: 1px solid black;
 }
 
-section .option_list .option.correct{
+section .choices .option.correct{
     color: #155724;
     background: #d4edda;
     border: 1px solid #c3e6cb;
 }
 
-section .option_list .option.incorrect{
+section .choices .option.incorrect{
     color: #721c24;
     background: #f8d7da;
     border: 1px solid #f5c6cb;
 }
 
-section .option_list .option.disabled{
+section .choices .option.disabled{
     pointer-events: none;
 }
 
-section .option_list .option .icon{
+section .choices .option .icon{
     height: 26px;
     width: 26px;
     border: 2px solid transparent;
@@ -241,13 +243,13 @@ section .option_list .option .icon{
     transition: all 0.3s ease;
     line-height: 24px;
 }
-.option_list .option .icon.tick{
+.choices .option .icon.tick{
     color: #23903c;
     border-color: #23903c;
     background: #d4edda;
 }
 
-.option_list .option .icon.cross{
+.choices .option .icon.cross{
     color: #a42834;
     background: #f8d7da;
     border-color: #a42834;
@@ -262,17 +264,17 @@ footer{
     border-top: 1px solid lightgrey;
 }
 
-footer .total_que span{
+footer .sum span{
     display: flex;
     user-select: none;
 }
 
-footer .total_que span p{
+footer .sum span p{
     font-weight: 500;
     padding: 0 5px;
 }
 
-footer .total_que span p:first-child{
+footer .sum span p:first-child{
     padding-left: 0px;
 }
 
@@ -306,7 +308,7 @@ footer button.show{
     transform: scale(1);
 }
 
-.result_box{
+.completion{
     background: black;
     border-radius: 5px;
     display: flex;
@@ -321,35 +323,38 @@ footer button.show{
     transition: all 0.3s ease;
 }
 
-.result_box .icon{
+.completion .icon{
     font-size: 100px;
     color: rgb(243, 159, 4);
     margin-bottom: 10px;
 }
 
-.result_box .complete_text{
+.completion .complete_text{
     font-size: 20px;
     font-weight: 500;
+    color: rgb(243, 159, 4);
 }
 
-.result_box .score_text span{
+.completion .score_text span{
     display: flex;
     margin: 10px 0;
     font-size: 18px;
     font-weight: 500;
+    color: rgb(243, 159, 4)
 }
 
-.result_box .score_text span p{
+.completion .score_text span p{
     padding: 0 4px;
     font-weight: 600;
+    color: rgb(243, 159, 4);
 }
 
-.result_box .buttons{
+.completion .buttons{
     display: flex;
     margin: 20px 0;
 }
 
-.result_box .buttons button{
+.completion .buttons button{
     margin: 0 10px;
     height: 45px;
     padding: 0 20px;
